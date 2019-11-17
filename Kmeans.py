@@ -2,7 +2,7 @@ from sklearn.datasets import make_blobs
 import matplotlib.pyplot as plt
 import numpy as np
 
-#определяем наяальные параметры системы
+#определяем начальные параметры системы
 seed = 42
 n_data = 500
 n_clusters = 4
@@ -18,7 +18,7 @@ blobs *= 0.6
 Centroid_indexes = np.random.choice(n_data, n_centers, replace = False)
 Centroids = blobs[Centroid_indexes]
 prev_Centroids = Centroids
-##for i in range(10):   
+#запускаем цикл, который будет продолжаться до тех пор, пока центроиды не перестанут двигаться 
 while flag:          
     # создаем матрицу расстояний
     Dist = (Centroids[:, 0][:, np.newaxis] - blobs[:, 0])**2
@@ -87,28 +87,7 @@ while flag:
     plt.ylabel('признак 2')    
     plt.grid(lw = 2)
     plt.xlim([-10, 10])
-    plt.ylim([-10, 10])
-
-
-
-plt.figure(figsize = (6,6))
-for i in range(n_data):
-    if clust_ind[i] == 0:    
-        plt.scatter(blobs[i,0], blobs[i,1], s = 60, color = '#FF9933', edgecolors = 'white', linewidth = 0.8)
-    if clust_ind[i] == 1:
-        plt.scatter(blobs[i,0], blobs[i,1], s = 60, color = '#3300FF', edgecolors = 'white', linewidth = 0.8)
-    if clust_ind[i] == 2:    
-        plt.scatter(blobs[i,0], blobs[i,1], s = 60, color = '#FF3333', edgecolors = 'white', linewidth = 0.8)
-    if clust_ind[i] == 3:    
-        plt.scatter(blobs[i,0], blobs[i,1], s = 60, color = '#00CC33', edgecolors = 'white', linewidth = 0.8)
-    if clust_ind[i] == 4:    
-       plt.scatter(blobs[i,0], blobs[i,1], s = 60, color = '#33FFFF', edgecolors = 'white', linewidth = 0.8)
-plt.xlabel('признак 1')
-plt.ylabel('признак 2')    
-plt.grid(lw = 2)
-plt.xlim([-10, 10])
-plt.ylim([-10, 10])
-        
+    plt.ylim([-10, 10])     
 
 
 
